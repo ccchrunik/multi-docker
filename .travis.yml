@@ -14,8 +14,6 @@ after_success:
   - docker build -t yingchiaochen/multi-server ./server
   - docker build -t yingchiaochen/multi-worker ./worker
   # log in to the docker CLI
-  - echo $DOCKER_PASSWORD
-  - echo $DOCKER_ID
   - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
   # Take those image and push them into docker hub
   - docker push yingchiaochen/multi-client
