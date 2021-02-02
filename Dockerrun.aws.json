@@ -1,0 +1,29 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [{
+    "name": "client",
+    "image": "yingchiaochen/multi-client",
+    "hostname": "client",
+    "essential": false
+  }, {
+    "name": "server",
+    "image": "yingchiaochen/multi-server",
+    "hostname": "api",
+    "essential": false
+  }, {
+    "name": "worker",
+    "image": "yingchiaochen/multi-worker",
+    "hostname": "worker",
+    "essential": false
+  }, {
+    "name": "nginx",
+    "image": "yingchiaochen/multi-nginx",
+    "hostname": "nginx",
+    "essential": true,
+    "portMappings": [{
+      "hostPort": 80,
+      "containerPort": 80
+    }],
+    "links": ["client", "server"]
+  }]
+}
